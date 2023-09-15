@@ -1,15 +1,39 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 app = Flask(__name__)
 
 @app.route("/")
 @app.route("/index")
 def start():
-    return """
+    return redirect("/menu", code=302)
 
+@app.route('/lab1/oak')
+def oak():
+    return'''
 
 <!doctype html>
 <html>
     <head>
+         <link rel="stylesheet" type="text/css" href="''' + url_for('static', filename='lab1.css') + '''">
+        <title>Тычинский Богдан Владимирович, лабораторная 1</title>
+    </head>
+    <body>
+        <h1>Дуб</h1>
+    
+        <img src="'''+ url_for('static', filename='Дуб.jpg',) + '''">
+      
+    </body>
+</html>
+'''
+
+
+@app.route("/menu")
+def menu():
+    return '''
+
+<!doctype html>
+<html>
+    <head>
+         <link rel="stylesheet" type="text/css" href="''' + url_for('static', filename='lab1.css') + '''">
         <title>Тычинский Богдан Владимирович, лабораторная 1</title>
     </head>
     <body>
@@ -23,16 +47,20 @@ def start():
         </footer>
     </body>
 </html>
-"""
+
+'''
+
+
 @app.route("/lab1")
 def lab1():
 
-    return """
+    return '''
 
 
 <!doctype html>
 <html>
     <head>
+     <link rel="stylesheet" type="text/css" href="''' + url_for('static', filename='lab1.css') + '''">
         <title>Тычинский Богдан Владимирович, лабораторная 1</title>
     </head>
     <body>
@@ -51,5 +79,15 @@ Werkzeug, а также шаблонизатор Jinja2. Относится к �
         </footer>
     </body>
 </html>
-"""
+'''
 
+
+@app.route('/lab1/student')
+def sudent():
+    return'''
+<!doctype html>
+<html>
+    <h1>Тычинский Богдан Владимирович</h1>
+    <img src="''' + url_for('static', filename='ЛОГО НГТУ.jpeg') + '''">
+</html>
+'''
