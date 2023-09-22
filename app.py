@@ -1,10 +1,11 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, render_template
 app = Flask(__name__)
 
 @app.route("/")
 @app.route("/index")
 def start():
     return redirect("/menu", code=302)
+
 
 @app.route('/lab1/oak')
 def oak():
@@ -111,3 +112,32 @@ def sudent():
     <img src="''' + url_for('static', filename='ЛОГО НГТУ.jpeg') + '''">
 </html>
 '''
+
+@app.route("/lab1/qwer")
+def qwer():
+    return '''
+
+<!doctype html>
+<html>
+    <head>
+         
+        # <link rel="stylesheet" type="text/css" href="''' + url_for('static', filename='lab1.css') + '''">
+        <title>Тычинский Богдан Владимирович, лабораторная 1</title>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 1
+        </header>
+
+        <p class="rer">Жили гуси у бабуси</p>
+        <h1>web-сервер на flask</h1>
+        <footer>
+            &copy; Богдан Тычинский, ФБИ-12, 3 курс, 2023
+        </footer>
+    </body>
+</html>
+
+'''
+@app.route ('/lab2/example')
+def example():
+    return render_template('example.html')
