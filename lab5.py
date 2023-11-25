@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Blueprint, render_template, request, make_response, redirect, session
 import psycopg2
@@ -177,7 +177,6 @@ def spisokArticle(article_id = '3'):
     for row in result:
             title += f"{row[0]}\n"
     return render_template('spisok_article.html',title=title, username=visibleUser)
-=======
 from flask import Blueprint, render_template, request, session
 import psycopg2
 
@@ -208,4 +207,3 @@ def main():
     return "go to console"
 
     
->>>>>>> cfede355a62b2d6b135535a8f2fc079bb44b4fc1
